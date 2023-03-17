@@ -9,6 +9,13 @@ from nltk.probability import FreqDist
 from utils.analysis import get_corpus, most_common_words, Bigrams, Trigrams
 
 st.set_page_config(page_title="Analyze Dashboard", page_icon="📊")
+hide_streamlit_style = """
+            <style>
+            #MainMenu {visibility: hidden;}
+            footer {visibility: hidden;}
+            </style>
+            """
+st.markdown(hide_streamlit_style, unsafe_allow_html=True) 
 
 df = pd.read_csv('./sample_dataset/labeled_dataset.csv')
 df['word_count'] = df['Prompt'].apply(lambda x: len(x.split()))

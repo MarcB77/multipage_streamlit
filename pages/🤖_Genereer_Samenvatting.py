@@ -6,6 +6,14 @@ from streamlit_chat import message as st_message
 from utils.api_gpt__3_5 import streamlit_prompt, streamlit_prompt_curie
 
 st.set_page_config(page_title="Genereer Samenvatting", page_icon="🤖", layout='wide', initial_sidebar_state='expanded')
+hide_streamlit_style = """
+            <style>
+            #MainMenu {visibility: hidden;}
+            footer {visibility: hidden;}
+            </style>
+            """
+st.markdown(hide_streamlit_style, unsafe_allow_html=True) 
+
 st.sidebar.success("Genereer een samenvatting op deze demo pagina.")
 
 NER = spacy.load("nl_core_news_lg")
