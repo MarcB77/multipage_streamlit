@@ -10,7 +10,7 @@ st.set_page_config(
 
 col1, col2 = st.columns(2)
 
-image = Image.open('image/southfields_logo.png')
+image = Image.open('image/southfields_logo2.png')
 image_aurai = Image.open('image/aurai_logo.png')
 
 with col1:
