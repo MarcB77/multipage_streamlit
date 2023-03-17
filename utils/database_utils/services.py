@@ -14,12 +14,13 @@ def get_db_AWS():
         db_postgres_AWS.close()
 
 def insert_prompt(
-    db: _orm.Session, UUID: str, prompt: str
+    UUID: str, prompt: str
 ):
 
     db_prompt_data = _models.ST_Prompts(
         id=UUID, prompt=prompt
     )
+    db = _database.Session_postgres_AWS()
     db.add(db_prompt_data)
     db.commit()
     db.refresh(db_prompt_data)
