@@ -16,7 +16,7 @@ hide_streamlit_style = """
             """
 st.markdown(hide_streamlit_style, unsafe_allow_html=True) 
 
-image = Image.open('image/southfields_logo2.png')
+image = Image.open('image/southfields_logo.png')
 image_aurai = Image.open('image/aurai_logo.png')
 
 # col1, col2 = st.columns(2)
