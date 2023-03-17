@@ -5,7 +5,7 @@ from streamlit_chat import message as st_message
 
 from utils.api_gpt__3_5 import streamlit_prompt, streamlit_prompt_curie
 
-st.set_page_config(page_title="GPT model", page_icon="🤖")
+st.set_page_config(page_title="GPT model", page_icon="🤖", layout='wide', initial_sidebar_state='expanded')
 
 NER = spacy.load("nl_core_news_lg")
 temperature_history = 0.50
