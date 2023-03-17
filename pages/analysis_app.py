@@ -14,7 +14,6 @@ df = pd.read_csv('./sample_dataset/labeled_dataset.csv')
 df['word_count'] = df['Prompt'].apply(lambda x: len(x.split()))
 sns.set(rc={'axes.facecolor':'#100c44', 'figure.facecolor':'#100c44', 'xtick.color':'white', 'ytick.color':'white', 'text.color':'white', 'axes.labelcolor':'white'})
 
-st.set_page_config(layout='wide', initial_sidebar_state='expanded')
 image = Image.open('image/southfields_logo.png')
 st.image(image)
 
