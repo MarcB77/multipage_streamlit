@@ -10,7 +10,7 @@ def create_df():
         "QUANTITY":"Metingen, zoals gewicht of afstand.",
         "DATE":"Absolute of relatieve datums of perioden.",
         "TIME":"Tijd kleiner dan een dag.",
-        "PERCENT":"Percentage, inclusief "%".",
+        "PERCENT":"Percentage, inclusief '%'.",
         "NORP":"Nationaliteiten of religieuze of politieke groeperingen.",
         "FAC":"Gebouwen, luchthavens, snelwegen, bruggen, enz.",
         "GPE":"Landen, steden, staten.",
