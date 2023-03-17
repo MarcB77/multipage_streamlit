@@ -8,6 +8,14 @@ st.set_page_config(
     initial_sidebar_state='expanded'
 )
 
+hide_streamlit_style = """
+            <style>
+            #MainMenu {visibility: hidden;}
+            footer {visibility: hidden;}
+            </style>
+            """
+st.markdown(hide_streamlit_style, unsafe_allow_html=True) 
+
 image = Image.open('image/southfields_logo2.png')
 image_aurai = Image.open('image/aurai_logo.png')
 
@@ -15,11 +23,12 @@ image_aurai = Image.open('image/aurai_logo.png')
 # with col1:
 st.image(image)
 # with col2:
-st.sidebar.image(image_aurai)
+
 
 st.write("# Welcome to South-Fields Demo!")
 
 st.sidebar.success("Selecteer een demo hierboven.")
+st.sidebar.image(image_aurai)
 
 st.markdown(
     """
