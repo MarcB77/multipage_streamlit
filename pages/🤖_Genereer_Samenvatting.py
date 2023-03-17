@@ -47,7 +47,12 @@ with st.spinner("Even een samenvatting aan het schrijven, momentje..."):
         st.markdown("""# Named Entity Recognition """)
         st.markdown(spacy_NER_output, unsafe_allow_html=True)
 
-st.info('Model temperature:\n - Higher values like 0.8 will make the output more random\n - Lower values like 0.2 will make it more focused and deterministic\n\n De NER-functie: \n\n Kan entiteiten in ongestructureerde tekst identificeren en categoriseren. Bijvoorbeeld: \n- Personen\n - Plaatsen\n - Organisaties\n - Hoeveelheden.', icon="ℹ️")
+st.info(
+    """Model temperature:\n - Higher values like 0.8 will make the output more random\n 
+    - Lower values like 0.2 will make it more focused and deterministic\n\n 
+    De NER-functie: \n\n Kan entiteiten in ongestructureerde tekst identificeren en categoriseren. Bijvoorbeeld: \n
+    - Personen\n - Plaatsen\n - Organisaties\n - Hoeveelheden.""", 
+    icon="ℹ️")
 
     # st.text_area(
     #     label="Your input:  \n", 
