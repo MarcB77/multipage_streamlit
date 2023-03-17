@@ -22,4 +22,4 @@ def create_df():
         "LANGUAGE":"Elke benoemde taal.",
         "MONEY":"Geldwaarden, inclusief eenheid."
     }
-    return pd.DataFrame({'Entity': entities.keys(), 'Uitleg': entities.values()})
+    return pd.DataFrame({'Entiteiten': entities.keys(), 'Uitleg': entities.values()})
