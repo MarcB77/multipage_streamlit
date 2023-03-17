@@ -9,7 +9,10 @@ st.set_page_config(
 )
 
 image = Image.open('image/southfields_logo.png')
+image_aurai = Image.open('image/aurai_logo.png')
+
 st.image(image)
+st.image(image_aurai)
 
 st.write("# Welcome to South-Fields Demo!")
 
