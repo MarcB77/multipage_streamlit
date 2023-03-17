@@ -60,4 +60,4 @@ st.info(
     \n Entiteiten lijst: \n""", 
     icon="ℹ️")
 
-st.dataframe(data=create_df(), use_container_width=True)
+st.dataframe(data=create_df())
