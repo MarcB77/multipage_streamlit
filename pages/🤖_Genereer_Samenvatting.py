@@ -11,8 +11,10 @@ import utils.database_utils.services as _services
 
 _services.create_AWS_database()
 
-def prompt_to_DB(PROMPT, db_postgres_AWS: _orm.Session = _services.get_db_AWS):
+def prompt_to_DB(PROMPT):
     UUID = str(uuid.uuid1())
+    db_postgres_AWS = _services.get_db_AWS()
+    print(type(db_postgres_AWS))
     _services.insert_prompt(UUID=UUID, prompt=PROMPT, db=db_postgres_AWS)
 
 
