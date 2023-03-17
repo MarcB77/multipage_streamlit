@@ -3,6 +3,7 @@ import streamlit as st
 from PIL import Image
 from streamlit_chat import message as st_message
 import uuid
+import sqlalchemy.orm as _orm
 
 from utils.api_gpt__3_5 import streamlit_prompt, streamlit_prompt_curie
 from utils.entity_dataframe import create_df
@@ -10,9 +11,9 @@ import utils.database_utils.services as _services
 
 _services.create_AWS_database()
 
-def prompt_to_DB(PROMPT):
+def prompt_to_DB(PROMPT, db_postgres_AWS: _orm.Session = _services.get_db_AWS):
     UUID = str(uuid.uuid1())
-    _services.create_prediction(UUID=UUID, prompt=PROMPT, db=_services.get_db_AWS)
+    _services.insert_prompt(UUID=UUID, prompt=PROMPT, db=db_postgres_AWS)
 
 
 st.set_page_config(page_title="Genereer Samenvatting", page_icon="🤖", layout='wide', initial_sidebar_state='expanded')

@@ -13,7 +13,7 @@ def get_db_AWS():
     finally:
         db_postgres_AWS.close()
 
-def create_prediction(
+def insert_prompt(
     db: _orm.Session, UUID: str, prompt: str
 ):
 
