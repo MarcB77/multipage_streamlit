@@ -40,9 +40,6 @@ input_data = st.text_area(
 
 with st.spinner("Even een samenvatting aan het schrijven, momentje..."):
     if input_data != "..":
-        # st_message(input_data,
-        #             avatar_style="thumbs",
-        #             is_user=True)
         
         generated_output = streamlit_prompt_curie(input_data, TEMP=temperature_GPT)
 
@@ -61,9 +58,3 @@ st.info(
     \n\n De NER-functie: \n\n Kan entiteiten in ongestructureerde tekst identificeren en categoriseren. 
     Bijvoorbeeld: \n- Personen\n - Plaatsen\n - Organisaties\n - Hoeveelheden.""", 
     icon="ℹ️")
-
-    # st.text_area(
-    #     label="Your input:  \n", 
-    #     value=input_data,
-    #     height=200
-    #     ) # Double whitesace before \n to get a newline.
