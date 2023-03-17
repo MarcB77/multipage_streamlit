@@ -14,4 +14,4 @@ class ST_Prompts(_database.Base):
 
     __tablename__ = "st_prompts"
     id = _sql.Column(_sql.String(255), primary_key=True, index=True)
-    prompt = _sql.Column(_sql.String(255), unique=False, index=True)
+    prompt = _sql.Column(_sql.String(), unique=False, index=True)
