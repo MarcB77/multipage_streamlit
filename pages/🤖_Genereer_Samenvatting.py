@@ -4,6 +4,7 @@ from PIL import Image
 from streamlit_chat import message as st_message
 
 from utils.api_gpt__3_5 import streamlit_prompt, streamlit_prompt_curie
+from utils.entity_dataframe import create_df
 
 st.set_page_config(page_title="Genereer Samenvatting", page_icon="🤖", layout='wide', initial_sidebar_state='expanded')
 hide_streamlit_style = """
@@ -58,3 +59,5 @@ st.info(
     \n\n De NER-functie: \n\n Kan entiteiten in ongestructureerde tekst identificeren en categoriseren. 
     Bijvoorbeeld: \n- Personen - second\n - Plaatsen\n - Organisaties\n - Hoeveelheden.""", 
     icon="ℹ️")
+
+st.dataframe(data=create_df())
