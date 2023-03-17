@@ -11,13 +11,13 @@ st.set_page_config(
 image = Image.open('image/southfields_logo.png')
 st.image(image)
 
-st.write("# Welcome to South-Fields Demo! 👋")
+st.write("# Welcome to South-Fields Demo!")
 
-st.sidebar.success("Select a demo above.")
+st.sidebar.success("Selecteer een demo hierboven.")
 
 st.markdown(
     """
     Author: Marc Blomvliet (Aurai) \n
-    **👈 Select a demo from the sidebar** 
+    **👈 Selecteer een demo uit de sidebar** 
 """
 )
