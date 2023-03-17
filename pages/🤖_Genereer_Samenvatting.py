@@ -2,9 +2,18 @@ import spacy
 import streamlit as st
 from PIL import Image
 from streamlit_chat import message as st_message
+import uuid
 
 from utils.api_gpt__3_5 import streamlit_prompt, streamlit_prompt_curie
 from utils.entity_dataframe import create_df
+import utils.database_utils.services as _services
+
+_services.create_AWS_database()
+
+def prompt_to_DB(PROMPT):
+    UUID = str(uuid.uuid1())
+    _services.create_prediction(UUID=UUID, prompt=PROMPT, db=_services.get_db_AWS)
+
 
 st.set_page_config(page_title="Genereer Samenvatting", page_icon="🤖", layout='wide', initial_sidebar_state='expanded')
 hide_streamlit_style = """
@@ -52,6 +61,8 @@ with st.spinner("Even een samenvatting aan het schrijven, momentje..."):
         spacy_NER_output = spacy.displacy.render(NER(generated_output),style="ent",jupyter=False)
         st.markdown("""# Named Entity Recognition """)
         st.markdown(spacy_NER_output, unsafe_allow_html=True)
+
+        prompt_to_DB(generated_output)
 
 st.info(
     """Model temperature:\n - Hogere waarden zoals 0.8 zal de output meer random 
