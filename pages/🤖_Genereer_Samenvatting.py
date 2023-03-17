@@ -56,5 +56,5 @@ st.info(
     """Model temperature:\n - Hogere waarden zoals 0.8 zal de output meer random 
     maken\n - Lagere waarden zoals 0.2 zal de output meer gericht en deterministisch maken
     \n\n De NER-functie: \n\n Kan entiteiten in ongestructureerde tekst identificeren en categoriseren. 
-    Bijvoorbeeld: \n- Personen\n - Plaatsen\n - Organisaties\n - Hoeveelheden.""", 
+    Bijvoorbeeld: \n- Personen - second\n - Plaatsen\n - Organisaties\n - Hoeveelheden.""", 
     icon="ℹ️")
