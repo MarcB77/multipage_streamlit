@@ -56,8 +56,8 @@ with st.spinner("Even een samenvatting aan het schrijven, momentje..."):
 st.info(
     """Model temperature:\n - Hogere waarden zoals 0.8 zal de output meer random 
     maken\n - Lagere waarden zoals 0.2 zal de output meer gericht en deterministisch maken
-    \n\n De NER-functie: \n\n Kan entiteiten in ongestructureerde tekst identificeren en categoriseren.\n 
-    Entiteiten lijst: \n""", 
+    \n\n De NER-functie: \n\n Kan entiteiten in ongestructureerde tekst identificeren en categoriseren.
+    \n Entiteiten lijst: \n""", 
     icon="ℹ️")
 
 st.dataframe(data=create_df())
