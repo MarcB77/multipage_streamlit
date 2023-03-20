@@ -36,7 +36,7 @@ st.image(image)
 
 st.write(""" # South-Fields Demo """)
 
-temperature_GPT = st.number_input(
+temperature_GPT = st.sidebar.number_input(
     label="Model Temperature",
     min_value=0.0,
     max_value=1.0,
