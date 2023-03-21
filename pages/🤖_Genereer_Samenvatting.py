@@ -25,7 +25,8 @@ def load_images():
 
 @st.cache_data
 def load_nl_core_news_lg():
-    NER = spacy.load("nl_core_news_lg")
+    with st.spinner("Een momentje..."):
+        NER = spacy.load("nl_core_news_lg")
     return NER
 
 def streamlit_page_config():
