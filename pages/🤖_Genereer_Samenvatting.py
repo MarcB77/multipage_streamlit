@@ -38,6 +38,7 @@ def streamlit_page_config():
                 """
     st.markdown(hide_streamlit_style, unsafe_allow_html=True) 
 
+st.cache_data.clear()
 streamlit_page_config()
 st.sidebar.success("Genereer een samenvatting op deze demo pagina.")
 create_AWS_DB()
