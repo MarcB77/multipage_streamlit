@@ -10,7 +10,7 @@ from utils.analysis import get_corpus, most_common_words, Bigrams, Trigrams
 
 sns.set(rc={'axes.facecolor':'#100c44', 'figure.facecolor':'#100c44', 'xtick.color':'white', 
             'ytick.color':'white', 'text.color':'white', 'axes.labelcolor':'white',
-            'font.size':15, 'axes.titlesize':18,'axes.labelsize':18
+            'font.size':30, 'axes.titlesize':30,'axes.labelsize':30
             })
 
 @st.cache_data(show_spinner="Een momentje...")
@@ -50,7 +50,7 @@ amount_words = st.sidebar.slider("Aantal 'meest' voorkomende woorden", max_value
 
 with st.spinner("Een momentje..."):
     if selected_sport != []:
-        fig = plt.figure(figsize=(16,100))
+        fig = plt.figure(figsize=(16,50))
         ax1 = fig.add_subplot(5, 1, 1)
         ax2 = fig.add_subplot(5, 1, 2)
         ax3 = fig.add_subplot(5, 1, 3)
