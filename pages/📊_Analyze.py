@@ -8,6 +8,7 @@ from nltk.probability import FreqDist
 
 from utils.analysis import get_corpus, most_common_words, Bigrams, Trigrams
 
+sns.set(rc={'axes.facecolor':'#100c44', 'figure.facecolor':'#100c44', 'xtick.color':'white', 'ytick.color':'white', 'text.color':'white', 'axes.labelcolor':'white'})
 
 @st.cache_data(show_spinner="Een momentje...")
 def load_images():
@@ -29,7 +30,6 @@ def streamlit_page_config():
                 </style>
                 """
     st.markdown(hide_streamlit_style, unsafe_allow_html=True) 
-    sns.set(rc={'axes.facecolor':'#100c44', 'figure.facecolor':'#100c44', 'xtick.color':'white', 'ytick.color':'white', 'text.color':'white', 'axes.labelcolor':'white'})
 
 streamlit_page_config()
 image = load_images()
