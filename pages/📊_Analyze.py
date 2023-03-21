@@ -9,7 +9,7 @@ from nltk.probability import FreqDist
 from utils.analysis import get_corpus, most_common_words, Bigrams, Trigrams
 
 
-@st.cache
+@st.cache_data
 def load_images():
     image = Image.open('image/southfields_logo.png')
     return image

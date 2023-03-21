@@ -9,7 +9,7 @@ from utils.api_gpt__3_5 import streamlit_prompt, streamlit_prompt_curie
 from utils.entity_dataframe import create_df
 import utils.database_utils.services as _services
 
-@st.cache
+@st.cache_data
 def create_AWS_DB():
     _services.create_AWS_database()
 
@@ -18,7 +18,7 @@ def prompt_to_DB(PROMPT):
 
     _services.insert_prompt(UUID=UUID, prompt=PROMPT)
 
-@st.cache
+@st.cache_data
 def load_images():
     image = Image.open('image/southfields_logo.png')
     return image
