@@ -62,7 +62,7 @@ with st.spinner("Een momentje..."):
             df.loc[df.Type_sport == selected_sport[0]], x='word_count', kde=True, 
             color="#FFFFFF", binwidth = 1, alpha = 0.9, ax=ax1
             )
-        ax1.set_title('Totaal aantal woorden')
+        ax1.set_title('Totaal aantal woorden\n per samenvatting')
         ax1.set_xlabel("Aantal woorden")
         ax1.set_ylabel("Aantal samenvatting\nmet dit aantal woorden")
 
