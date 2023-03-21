@@ -9,7 +9,7 @@ from utils.api_gpt__3_5 import streamlit_prompt, streamlit_prompt_curie
 from utils.entity_dataframe import create_df
 import utils.database_utils.services as _services
 
-@st.cache_data(show_spinner=False)
+@st.cache_data(show_spinner="Een momentje...")
 def create_AWS_DB():
     _services.create_AWS_database()
 
@@ -18,15 +18,14 @@ def prompt_to_DB(PROMPT):
 
     _services.insert_prompt(UUID=UUID, prompt=PROMPT)
 
-@st.cache_data(show_spinner=False)
+@st.cache_data(show_spinner="Een momentje...")
 def load_images():
     image = Image.open('image/southfields_logo.png')
     return image
 
-@st.cache_data(show_spinner=False)
+@st.cache_data(show_spinner="Een momentje...")
 def load_nl_core_news_lg():
-    with st.spinner("Een momentje..."):
-        NER = spacy.load("nl_core_news_lg")
+    NER = spacy.load("nl_core_news_lg")
     return NER
 
 def streamlit_page_config():
