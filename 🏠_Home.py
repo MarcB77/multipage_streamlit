@@ -1,24 +1,32 @@
 import streamlit as st
 from PIL import Image
 
-st.set_page_config(
-    page_title="Home",
-    page_icon="🏠",
-    layout='wide',
-    initial_sidebar_state='expanded'
-)
 
-hide_streamlit_style = """
-            <style>
-            #MainMenu {visibility: hidden;}
-            footer {visibility: hidden;}
-            </style>
-            """
-st.markdown(hide_streamlit_style, unsafe_allow_html=True) 
+@st.cache
+def streamlit_page_config():
+    st.set_page_config(
+        page_title="Home",
+        page_icon="🏠",
+        layout='wide',
+        initial_sidebar_state='expanded'
+    )
 
-image = Image.open('image/southfields_logo.png')
-image_aurai = Image.open('image/aurai_logo.png')
+    hide_streamlit_style = """
+                <style>
+                #MainMenu {visibility: hidden;}
+                footer {visibility: hidden;}
+                </style>
+                """
+    st.markdown(hide_streamlit_style, unsafe_allow_html=True) 
 
+@st.cache
+def load_images():
+    image = Image.open('image/southfields_logo.png')
+    image_aurai = Image.open('image/aurai_logo.png')
+    return image, image_aurai
+
+streamlit_page_config()
+image, image_aurai = load_images()
 # col1, col2 = st.columns(2)
 # with col1:
 st.image(image)

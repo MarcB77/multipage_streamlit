@@ -8,20 +8,33 @@ from nltk.probability import FreqDist
 
 from utils.analysis import get_corpus, most_common_words, Bigrams, Trigrams
 
-st.set_page_config(page_title="Analyze Dashboard", page_icon="📊")
-hide_streamlit_style = """
-            <style>
-            #MainMenu {visibility: hidden;}
-            footer {visibility: hidden;}
-            </style>
-            """
-st.markdown(hide_streamlit_style, unsafe_allow_html=True) 
 
-df = pd.read_csv('./sample_dataset/labeled_dataset.csv')
-df['word_count'] = df['Prompt'].apply(lambda x: len(x.split()))
-sns.set(rc={'axes.facecolor':'#100c44', 'figure.facecolor':'#100c44', 'xtick.color':'white', 'ytick.color':'white', 'text.color':'white', 'axes.labelcolor':'white'})
+@st.cache
+def load_images():
+    image = Image.open('image/southfields_logo.png')
+    return image
 
-image = Image.open('image/southfields_logo.png')
+@st.cache
+def load_dataset():
+    df = pd.read_csv('./sample_dataset/labeled_dataset.csv')
+    df['word_count'] = df['Prompt'].apply(lambda x: len(x.split()))
+    return df
+
+@st.cache
+def streamlit_page_config():
+    st.set_page_config(page_title="Analyze Dashboard", page_icon="📊")
+    hide_streamlit_style = """
+                <style>
+                #MainMenu {visibility: hidden;}
+                footer {visibility: hidden;}
+                </style>
+                """
+    st.markdown(hide_streamlit_style, unsafe_allow_html=True) 
+    sns.set(rc={'axes.facecolor':'#100c44', 'figure.facecolor':'#100c44', 'xtick.color':'white', 'ytick.color':'white', 'text.color':'white', 'axes.labelcolor':'white'})
+
+image = load_images()
+df = load_dataset()
+streamlit_page_config()
 st.image(image)
 
 st.write(""" # South-Fields Analyze """)

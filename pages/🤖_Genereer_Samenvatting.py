@@ -9,29 +9,42 @@ from utils.api_gpt__3_5 import streamlit_prompt, streamlit_prompt_curie
 from utils.entity_dataframe import create_df
 import utils.database_utils.services as _services
 
-_services.create_AWS_database()
+@st.cache
+def create_AWS_DB():
+    _services.create_AWS_database()
 
 def prompt_to_DB(PROMPT):
     UUID = str(uuid.uuid1())
 
     _services.insert_prompt(UUID=UUID, prompt=PROMPT)
 
+@st.cache
+def load_images():
+    image = Image.open('image/southfields_logo.png')
+    return image
 
-st.set_page_config(page_title="Genereer Samenvatting", page_icon="🤖", layout='wide', initial_sidebar_state='expanded')
-hide_streamlit_style = """
-            <style>
-            #MainMenu {visibility: hidden;}
-            footer {visibility: hidden;}
-            </style>
-            """
-st.markdown(hide_streamlit_style, unsafe_allow_html=True) 
+@st.cache
+def load_nl_core_news_lg():
+    NER = spacy.load("nl_core_news_lg")
+    return NER
+
+@st.cache
+def streamlit_page_config():
+    st.set_page_config(page_title="Genereer Samenvatting", page_icon="🤖", layout='wide', initial_sidebar_state='expanded')
+    hide_streamlit_style = """
+                <style>
+                #MainMenu {visibility: hidden;}
+                footer {visibility: hidden;}
+                </style>
+                """
+    st.markdown(hide_streamlit_style, unsafe_allow_html=True) 
 
 st.sidebar.success("Genereer een samenvatting op deze demo pagina.")
 
-NER = spacy.load("nl_core_news_lg")
-temperature_history = 0.50
-
-image = Image.open('image/southfields_logo.png')
+streamlit_page_config()
+create_AWS_DB()
+NER = load_nl_core_news_lg()
+image = load_images()
 st.image(image)
 
 st.write(""" # South-Fields Demo """)
@@ -61,7 +74,7 @@ with st.spinner("Even een samenvatting aan het schrijven, momentje..."):
                 is_user=False)
         
         
-        spacy_NER_output = spacy.displacy.render(NER(generated_output),style="ent",jupyter=False)
+        #spacy_NER_output = spacy.displacy.render(NER(generated_output),style="ent",jupyter=False)
         # st.markdown("""# Named Entity Recognition """)
         # st.markdown(spacy_NER_output, unsafe_allow_html=True)
         with st.spinner("Wegschrijven naar database"):
