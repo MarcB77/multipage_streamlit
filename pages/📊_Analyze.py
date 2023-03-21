@@ -83,4 +83,4 @@ with st.spinner("Een momentje..."):
         sns.barplot(x=ngram_freq['frequency'][:amount_words], y=ngram_freq['ngram'][:amount_words], color="#FFFFFF", ax=ax5)
         ax5.set_title('Top {} meest voorkomende {}'.format(amount_words, ngram_type))
 
-        st.pyplot(fig)
+        st.pyplot(fig, clear_figure=True)
