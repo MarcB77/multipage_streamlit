@@ -32,9 +32,9 @@ def streamlit_page_config():
     st.markdown(hide_streamlit_style, unsafe_allow_html=True) 
     sns.set(rc={'axes.facecolor':'#100c44', 'figure.facecolor':'#100c44', 'xtick.color':'white', 'ytick.color':'white', 'text.color':'white', 'axes.labelcolor':'white'})
 
+streamlit_page_config()
 image = load_images()
 df = load_dataset()
-streamlit_page_config()
 st.image(image)
 
 st.write(""" # South-Fields Analyze """)

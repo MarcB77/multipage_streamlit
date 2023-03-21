@@ -39,9 +39,8 @@ def streamlit_page_config():
                 """
     st.markdown(hide_streamlit_style, unsafe_allow_html=True) 
 
-st.sidebar.success("Genereer een samenvatting op deze demo pagina.")
-
 streamlit_page_config()
+st.sidebar.success("Genereer een samenvatting op deze demo pagina.")
 create_AWS_DB()
 NER = load_nl_core_news_lg()
 image = load_images()
