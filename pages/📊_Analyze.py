@@ -10,7 +10,8 @@ from utils.analysis import get_corpus, most_common_words, Bigrams, Trigrams
 
 sns.set(rc={'axes.facecolor':'#100c44', 'figure.facecolor':'#100c44', 'xtick.color':'white', 
             'ytick.color':'white', 'text.color':'white', 'axes.labelcolor':'white',
-            'font.size':30, 'axes.titlesize':30,'axes.labelsize':30
+            'font.size':30, 'axes.titlesize':30, 'axes.labelsize':30, 'xtick.labelsize':20, 
+            'ytick.labelsize':20
             })
 
 @st.cache_data(show_spinner="Een momentje...")
@@ -56,7 +57,7 @@ with st.spinner("Een momentje..."):
         ax3 = fig.add_subplot(5, 1, 3)
         ax4 = fig.add_subplot(5, 1, 4)
         ax5 = fig.add_subplot(5, 1, 5)
-        plt.subplots_adjust(hspace=0.1)
+        plt.subplots_adjust(hspace=0.5)
         sns.histplot(
             df.loc[df.Type_sport == selected_sport[0]], x='word_count', kde=True, 
             color="#FFFFFF", binwidth = 1, alpha = 0.9, ax=ax1
