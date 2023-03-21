@@ -23,7 +23,7 @@ def load_images():
     image = Image.open('image/southfields_logo.png')
     return image
 
-@st.cache
+@st.cache_data
 def load_nl_core_news_lg():
     NER = spacy.load("nl_core_news_lg")
     return NER

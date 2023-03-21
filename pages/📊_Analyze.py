@@ -14,7 +14,7 @@ def load_images():
     image = Image.open('image/southfields_logo.png')
     return image
 
-@st.cache
+@st.cache_data
 def load_dataset():
     df = pd.read_csv('./sample_dataset/labeled_dataset.csv')
     df['word_count'] = df['Prompt'].apply(lambda x: len(x.split()))
