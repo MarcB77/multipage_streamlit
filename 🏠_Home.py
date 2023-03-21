@@ -18,7 +18,7 @@ def streamlit_page_config():
                 """
     st.markdown(hide_streamlit_style, unsafe_allow_html=True) 
 
-@st.cache_data
+@st.cache_data(show_spinner=False)
 def load_images():
     image = Image.open('image/southfields_logo.png')
     image_aurai = Image.open('image/aurai_logo.png')

@@ -9,12 +9,12 @@ from nltk.probability import FreqDist
 from utils.analysis import get_corpus, most_common_words, Bigrams, Trigrams
 
 
-@st.cache_data
+@st.cache_data(show_spinner=False)
 def load_images():
     image = Image.open('image/southfields_logo.png')
     return image
 
-@st.cache_data
+@st.cache_data(show_spinner=False)
 def load_dataset():
     df = pd.read_csv('./sample_dataset/labeled_dataset.csv')
     df['word_count'] = df['Prompt'].apply(lambda x: len(x.split()))
