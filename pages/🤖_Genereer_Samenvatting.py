@@ -28,7 +28,6 @@ def load_nl_core_news_lg():
     NER = spacy.load("nl_core_news_lg")
     return NER
 
-@st.cache
 def streamlit_page_config():
     st.set_page_config(page_title="Genereer Samenvatting", page_icon="🤖", layout='wide', initial_sidebar_state='expanded')
     hide_streamlit_style = """

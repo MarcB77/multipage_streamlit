@@ -2,7 +2,6 @@ import streamlit as st
 from PIL import Image
 
 
-@st.cache
 def streamlit_page_config():
     st.set_page_config(
         page_title="Home",

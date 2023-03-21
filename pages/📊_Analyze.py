@@ -20,7 +20,6 @@ def load_dataset():
     df['word_count'] = df['Prompt'].apply(lambda x: len(x.split()))
     return df
 
-@st.cache
 def streamlit_page_config():
     st.set_page_config(page_title="Analyze Dashboard", page_icon="📊")
     hide_streamlit_style = """
