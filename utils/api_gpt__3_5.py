@@ -54,7 +54,7 @@ def streamlit_prompt(user_prompt: str, TEMP: float):
 def streamlit_prompt_curie(user_prompt: str, TEMP: float):
     completion = GPT_3(
         prompt=user_prompt, 
-        model_engine = "text-curie-001",
+        model_engine = "text-davinci-003",
         TEMP=TEMP
         )
     return completion.choices[0].text
