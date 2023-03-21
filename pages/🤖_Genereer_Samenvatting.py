@@ -22,7 +22,7 @@ def prompt_to_DB(PROMPT):
 def load_images():
     return Image.open('image/southfields_logo.png')
 
-@st.cache(allow_output_mutation=True, show_spinner="Een momentje...")
+@st.cache_resource(show_spinner="Een momentje...")
 def load_nl_core_news_lg():
     return spacy.load("nl_core_news_lg")
      
