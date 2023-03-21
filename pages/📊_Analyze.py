@@ -70,6 +70,8 @@ with st.spinner("Een momentje..."):
         words, freq = most_common_words(corpus, amount_words=amount_words)
         sns.barplot(x=freq, y=words, color="#FFFFFF", ax=ax2)
         ax2.set_title('Top {} meest voorkomende woorden'.format(amount_words))
+        ax2.set_xlabel("Frequentie")
+        ax2.set_ylabel("Woord combinatie")
 
         wordcloud= WordCloud(max_font_size=60, max_words=amount_words,width=500,height=200, stopwords=STOPWORDS, background_color='#FFFFFF').generate_from_frequencies(
         FreqDist([word for prompt in df.Prompt_lists for word in prompt])
@@ -82,9 +84,13 @@ with st.spinner("Een momentje..."):
         ngram_freq, ngram_type = Bigrams(df)
         sns.barplot(x=ngram_freq['frequency'][:amount_words], y=ngram_freq['ngram'][:amount_words], color="#FFFFFF", ax=ax4)
         ax4.set_title('Top {} meest voorkomende {}'.format(amount_words, ngram_type))
+        ax4.set_xlabel("Frequentie")
+        ax4.set_ylabel("Bigram combinatie")
 
         ngram_freq, ngram_type = Trigrams(df)
         sns.barplot(x=ngram_freq['frequency'][:amount_words], y=ngram_freq['ngram'][:amount_words], color="#FFFFFF", ax=ax5)
         ax5.set_title('Top {} meest voorkomende {}'.format(amount_words, ngram_type))
+        ax5.set_xlabel("Frequentie")
+        ax5.set_ylabel("Trigram combinatie")
 
         st.pyplot(fig, clear_figure=True)
