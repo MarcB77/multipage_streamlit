@@ -64,8 +64,8 @@ with st.spinner("Even een samenvatting aan het schrijven, momentje..."):
         spacy_NER_output = spacy.displacy.render(NER(generated_output),style="ent",jupyter=False)
         # st.markdown("""# Named Entity Recognition """)
         # st.markdown(spacy_NER_output, unsafe_allow_html=True)
-
-        prompt_to_DB(generated_output)
+        with st.spinner("Wegschrijven naar database"):
+            prompt_to_DB(generated_output)
 
 st.info(
         """Model temperature:\n - Hogere waarden zoals 0.8 zal de output meer random 
