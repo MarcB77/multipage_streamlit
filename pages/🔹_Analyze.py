@@ -26,7 +26,7 @@ def load_dataset():
     return df
 
 def streamlit_page_config():
-    st.set_page_config(page_title="Analyze Dashboard", page_icon="📊")
+    st.set_page_config(page_title="Analyze Dashboard", page_icon="🔹")
     hide_streamlit_style = """
                 <style>
                 #MainMenu {visibility: hidden;}
