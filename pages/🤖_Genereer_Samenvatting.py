@@ -88,7 +88,7 @@ if submit:
             generated_output = streamlit_prompt_curie(input_data, TEMP=temperature_GPT)
             _datetime = get_datetime()
             st.session_state.message_history.append(_datetime + generated_output)
-            for message_ in st.session_state.message_history:
+            for message_ in reversed(st.session_state.message_history):
                 st_message(
                     message_, avatar_style="bottts-neutral", seed="Aneka", is_user=False
                 )
