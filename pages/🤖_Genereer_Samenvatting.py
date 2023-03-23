@@ -9,8 +9,8 @@ from utils.api_gpt__3_5 import streamlit_prompt, streamlit_prompt_curie
 from utils.entity_dataframe import create_df
 import utils.database_utils.services as _services
 
-
-message_history = []
+if 'message_history' not in st.session_state:
+    st.session_state.message_history = []
 
 def create_AWS_DB():
     _services.create_AWS_database()
@@ -69,8 +69,8 @@ if submit:
             
             generated_output = streamlit_prompt_curie(input_data, TEMP=temperature_GPT)
 
-            message_history.append(generated_output)
-            for message_ in message_history:
+            st.session_state.message_history.append(generated_output)
+            for message_ in  st.session_state.message_history:
             
                 st_message(message_,
                         avatar_style="bottts-neutral",
