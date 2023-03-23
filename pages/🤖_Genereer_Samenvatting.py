@@ -79,10 +79,10 @@ if submit:
             with st.spinner("Wegschrijven naar database"):
                 prompt_to_DB(generated_output)
 
-    st.info(
-            """Model temperature:\n - Hogere waarden zoals 0.8 zal de output meer random 
-            maken\n - Lagere waarden zoals 0.2 zal de output meer gericht en deterministisch maken""", 
-            icon="ℹ️")
+st.info(
+        """Model temperature:\n - Hogere waarden zoals 0.8 zal de output meer random 
+        maken\n - Lagere waarden zoals 0.2 zal de output meer gericht en deterministisch maken""", 
+        icon="ℹ️")
     # st.info(
     #         """Model temperature:\n - Hogere waarden zoals 0.8 zal de output meer random 
     #         maken\n - Lagere waarden zoals 0.2 zal de output meer gericht en deterministisch maken
