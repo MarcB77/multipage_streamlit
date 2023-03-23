@@ -60,7 +60,6 @@ def get_datetime() -> str:
         + str(created_at.day)
         + ": "
         + str(created_at.strftime("%H:%M:%S"))
-        + "\n\n"
     )
     return created_at_formatted
 
