@@ -10,6 +10,8 @@ from utils.entity_dataframe import create_df
 import utils.database_utils.services as _services
 
 
+message_history = []
+
 def create_AWS_DB():
     _services.create_AWS_database()
 
@@ -67,10 +69,13 @@ if submit:
             
             generated_output = streamlit_prompt_curie(input_data, TEMP=temperature_GPT)
 
-            st_message(generated_output,
-                    avatar_style="bottts-neutral",
-                    seed="Aneka",
-                    is_user=False)
+            message_history.append(generated_output)
+            for message_ in message_history:
+            
+                st_message(message_,
+                        avatar_style="bottts-neutral",
+                        seed="Aneka",
+                        is_user=False)
             
             
             #spacy_NER_output = spacy.displacy.render(NER(generated_output),style="ent",jupyter=False)
