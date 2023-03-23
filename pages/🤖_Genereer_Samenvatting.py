@@ -53,16 +53,15 @@ temperature_GPT = st.sidebar.number_input(
     value=0.5
     )
 
-
+input_data = st.text_area(
+    label="Wedstrijd Data",
+    value="..",
+    height=200,
+    max_chars=None
+    )
 submit = st.button("Genereer")
 
 if submit:
-    input_data = st.text_area(
-        label="Wedstrijd Data",
-        value="..",
-        height=200,
-        max_chars=None
-        )
     with st.spinner("Even een samenvatting aan het schrijven, momentje..."):
         if input_data != "..":
             
