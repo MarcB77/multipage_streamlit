@@ -39,7 +39,7 @@ def load_nl_core_news_lg():
 def streamlit_page_config():
     st.set_page_config(
         page_title="Genereer Samenvatting",
-        page_icon="🔹",
+        page_icon="🤖",
         layout="wide",
         initial_sidebar_state="expanded",
     )
