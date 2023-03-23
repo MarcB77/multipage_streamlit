@@ -59,32 +59,34 @@ input_data = st.text_area(
     height=200,
     max_chars=None
     )
+submit = st.button("Genereer")
 
-with st.spinner("Even een samenvatting aan het schrijven, momentje..."):
-    if input_data != "..":
-        
-        generated_output = streamlit_prompt_curie(input_data, TEMP=temperature_GPT)
+if submit:
+    with st.spinner("Even een samenvatting aan het schrijven, momentje..."):
+        if input_data != "..":
+            
+            generated_output = streamlit_prompt_curie(input_data, TEMP=temperature_GPT)
 
-        st_message(generated_output,
-                avatar_style="bottts-neutral",
-                seed="Aneka",
-                is_user=False)
-        
-        
-        #spacy_NER_output = spacy.displacy.render(NER(generated_output),style="ent",jupyter=False)
-        # st.markdown("""# Named Entity Recognition """)
-        # st.markdown(spacy_NER_output, unsafe_allow_html=True)
-        with st.spinner("Wegschrijven naar database"):
-            prompt_to_DB(generated_output)
+            st_message(generated_output,
+                    avatar_style="bottts-neutral",
+                    seed="Aneka",
+                    is_user=False)
+            
+            
+            #spacy_NER_output = spacy.displacy.render(NER(generated_output),style="ent",jupyter=False)
+            # st.markdown("""# Named Entity Recognition """)
+            # st.markdown(spacy_NER_output, unsafe_allow_html=True)
+            with st.spinner("Wegschrijven naar database"):
+                prompt_to_DB(generated_output)
 
-st.info(
-        """Model temperature:\n - Hogere waarden zoals 0.8 zal de output meer random 
-        maken\n - Lagere waarden zoals 0.2 zal de output meer gericht en deterministisch maken""", 
-        icon="ℹ️")
-# st.info(
-#         """Model temperature:\n - Hogere waarden zoals 0.8 zal de output meer random 
-#         maken\n - Lagere waarden zoals 0.2 zal de output meer gericht en deterministisch maken
-#         \n\n De NER-functie: \n\n Kan entiteiten in ongestructureerde tekst identificeren en categoriseren.
-#         \n Entiteiten lijst: \n""", 
-#         icon="ℹ️")
-#st.dataframe(data=create_df(), width=550)
+    st.info(
+            """Model temperature:\n - Hogere waarden zoals 0.8 zal de output meer random 
+            maken\n - Lagere waarden zoals 0.2 zal de output meer gericht en deterministisch maken""", 
+            icon="ℹ️")
+    # st.info(
+    #         """Model temperature:\n - Hogere waarden zoals 0.8 zal de output meer random 
+    #         maken\n - Lagere waarden zoals 0.2 zal de output meer gericht en deterministisch maken
+    #         \n\n De NER-functie: \n\n Kan entiteiten in ongestructureerde tekst identificeren en categoriseren.
+    #         \n Entiteiten lijst: \n""", 
+    #         icon="ℹ️")
+    #st.dataframe(data=create_df(), width=550)
