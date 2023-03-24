@@ -3,27 +3,38 @@ import seaborn as sns
 import streamlit as st
 from PIL import Image
 import matplotlib.pyplot as plt
-from wordcloud import STOPWORDS, WordCloud
-from nltk.probability import FreqDist
 
-from utils.analysis import get_corpus, most_common_words, Bigrams, Trigrams
+from utils.analyze_plots import plot_all_axes
 
-sns.set(rc={'axes.facecolor':'#100c44', 'figure.facecolor':'#100c44', 'xtick.color':'white', 
-            'ytick.color':'white', 'text.color':'white', 'axes.labelcolor':'white',
-            'font.size':30, 'axes.titlesize':30, 'axes.labelsize':30, 'xtick.labelsize':20, 
-            'ytick.labelsize':20
-            })
+sns.set(
+    rc={
+        "axes.facecolor": "#100c44",
+        "figure.facecolor": "#100c44",
+        "xtick.color": "white",
+        "ytick.color": "white",
+        "text.color": "white",
+        "axes.labelcolor": "white",
+        "font.size": 30,
+        "axes.titlesize": 30,
+        "axes.labelsize": 30,
+        "xtick.labelsize": 20,
+        "ytick.labelsize": 20,
+    }
+)
+
 
 @st.cache_data(show_spinner="Een momentje...")
 def load_images():
-    image = Image.open('image/southfields_logo.png')
+    image = Image.open("image/southfields_logo.png")
     return image
+
 
 @st.cache_data(show_spinner="Een momentje...")
 def load_dataset():
-    df = pd.read_csv('./sample_dataset/labeled_dataset.csv')
-    df['word_count'] = df['Prompt'].apply(lambda x: len(x.split()))
+    df = pd.read_csv("./sample_dataset/labeled_dataset.csv")
+    df["word_count"] = df["Prompt"].apply(lambda x: len(x.split()))
     return df
+
 
 def streamlit_page_config():
     st.set_page_config(page_title="Analyze Dashboard", page_icon="📊")
@@ -33,7 +44,8 @@ def streamlit_page_config():
                 footer {visibility: hidden;}
                 </style>
                 """
-    st.markdown(hide_streamlit_style, unsafe_allow_html=True) 
+    st.markdown(hide_streamlit_style, unsafe_allow_html=True)
+
 
 streamlit_page_config()
 image = load_images()
@@ -41,56 +53,36 @@ df = load_dataset()
 st.image(image)
 
 st.write(""" # South-Fields Analyze """)
-selected_sport = st.sidebar.multiselect("Selecteer een type sport:",
-               max_selections=1,
-               options=df.Type_sport.unique(),
-               default="Voetbal"
-               )
+selected_sport = st.sidebar.multiselect(
+    "Selecteer een type sport:",
+    max_selections=1,
+    options=df.Type_sport.unique(),
+    default="Voetbal",
+)
 
-amount_words = st.sidebar.slider("Aantal 'meest' voorkomende woorden", max_value=20, min_value=3, value=10)
+amount_words = st.sidebar.slider(
+    "Aantal 'meest' voorkomende woorden", max_value=20, min_value=3, value=10
+)
 
 with st.spinner("Een momentje..."):
     if selected_sport != []:
-        fig = plt.figure(figsize=(16,50))
+        fig = plt.figure(figsize=(16, 50))
         ax1 = fig.add_subplot(5, 1, 1)
         ax2 = fig.add_subplot(5, 1, 2)
         ax3 = fig.add_subplot(5, 1, 3)
         ax4 = fig.add_subplot(5, 1, 4)
         ax5 = fig.add_subplot(5, 1, 5)
         plt.subplots_adjust(hspace=0.5)
-        sns.histplot(
-            df.loc[df.Type_sport == selected_sport[0]], x='word_count', kde=True, 
-            color="#FFFFFF", binwidth = 1, alpha = 0.9, ax=ax1
-            )
-        ax1.set_title('Totaal aantal woorden\n per samenvatting')
-        ax1.set_xlabel("Aantal woorden")
-        ax1.set_ylabel("Aantal samenvatting\nmet dit aantal woorden")
 
-        corpus = get_corpus(df)
-        words, freq = most_common_words(corpus, amount_words=amount_words)
-        sns.barplot(x=freq, y=words, color="#FFFFFF", ax=ax2)
-        ax2.set_title('Top {} meest voorkomende woorden'.format(amount_words))
-        ax2.set_xlabel("Frequentie")
-        ax2.set_ylabel("Woord combinatie")
-
-        wordcloud= WordCloud(max_font_size=60, max_words=amount_words,width=500,height=200, stopwords=STOPWORDS, background_color='#FFFFFF').generate_from_frequencies(
-        FreqDist([word for prompt in df.Prompt_lists for word in prompt])
+        ax1, ax2, ax3, ax4, ax5 = plot_all_axes(
+            ax1=ax1,
+            ax2=ax2,
+            ax3=ax3,
+            ax4=ax4,
+            ax5=ax5,
+            df=df,
+            selected_sport=selected_sport,
+            amount_words=amount_words,
         )
-        ax3.imshow(wordcloud)
-        ax3.grid(visible=False)
-        ax3.set_xticks([])
-        ax3.set_yticks([])
-
-        ngram_freq, ngram_type = Bigrams(df)
-        sns.barplot(x=ngram_freq['frequency'][:amount_words], y=ngram_freq['ngram'][:amount_words], color="#FFFFFF", ax=ax4)
-        ax4.set_title('Top {} meest voorkomende {}'.format(amount_words, ngram_type))
-        ax4.set_xlabel("Frequentie")
-        ax4.set_ylabel("Bigram combinatie")
-
-        ngram_freq, ngram_type = Trigrams(df)
-        sns.barplot(x=ngram_freq['frequency'][:amount_words], y=ngram_freq['ngram'][:amount_words], color="#FFFFFF", ax=ax5)
-        ax5.set_title('Top {} meest voorkomende {}'.format(amount_words, ngram_type))
-        ax5.set_xlabel("Frequentie")
-        ax5.set_ylabel("Trigram combinatie")
 
         st.pyplot(fig, clear_figure=True)
