@@ -8,7 +8,7 @@ from nltk.probability import FreqDist
 
 from utils.analysis import get_corpus, most_common_words, Bigrams, Trigrams
 
-sns.set(rc={'axes.facecolor':'#100c44', 'figure.facecolor':'#100c44', 'xtick.color':'white', 
+sns.set(rc={'axes.facecolor':'#081038', 'figure.facecolor':'#081038', 'xtick.color':'white', 
             'ytick.color':'white', 'text.color':'white', 'axes.labelcolor':'white',
             'font.size':30, 'axes.titlesize':30, 'axes.labelsize':30, 'xtick.labelsize':20, 
             'ytick.labelsize':20
