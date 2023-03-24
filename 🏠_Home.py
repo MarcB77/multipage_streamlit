@@ -32,7 +32,7 @@ st.image(image)
 # with col2:
 
 
-st.write("# Welcome to South-Fields Demo!")
+st.write("# Welcome Marc to South-Fields Demo!")
 
 st.sidebar.success("Selecteer een demo hierboven.")
 st.sidebar.image(image_aurai)
