@@ -79,7 +79,7 @@ def trigrams_plot(ax5: plt.Axes, df: pd.DataFrame, amount_words: int) -> plt.Axe
     )
     ax5.set_title("Top {} meest voorkomende {}".format(amount_words, ngram_type))
     ax5.set_xlabel("Frequentie")
-    ax5.set_ylabel("Trigram combinatie")
+    ax5.set_ylabel("Trigram combinatie TEST")
     return ax5
 
 
