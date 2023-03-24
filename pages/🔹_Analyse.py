@@ -4,7 +4,7 @@ import streamlit as st
 from PIL import Image
 import matplotlib.pyplot as plt
 
-from utils.analyze_plots import plot_all_axes
+from utils.analyse_plots import plot_all_axes
 
 sns.set(
     rc={
@@ -52,7 +52,7 @@ image = load_images()
 df = load_dataset()
 st.image(image)
 
-st.write(""" # South-Fields Analyze """)
+st.write(""" # South-Fields Analyse """)
 selected_sport = st.sidebar.multiselect(
     "Selecteer een type sport:",
     max_selections=1,
